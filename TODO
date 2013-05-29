@@ -1,0 +1,2 @@
+- add dotfolder, e.g. ".vim/"
+- replace static source/target configuration with config file
