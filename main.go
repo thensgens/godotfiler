@@ -50,7 +50,7 @@ func checkFlags() FlagResult {
 }
 
 func usage() {
-	fmt.Println("Godotfiles has to be invoked with the --option flag.")
+	fmt.Println("Godotfiler has to be invoked with the --option flag.")
 	fmt.Println("Possible values are: restore / archive. Exiting..")
 	os.Exit(-1)
 }
