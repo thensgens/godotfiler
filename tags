@@ -1,0 +1,36 @@
+!_TAG_FILE_FORMAT	2	
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted/
+!_TAG_PROGRAM_AUTHOR	Joel Stemmer	/stemmertech@gmail.com/
+!_TAG_PROGRAM_NAME	gotags	
+!_TAG_PROGRAM_URL	https://github.com/jstemmer/gotags	
+!_TAG_PROGRAM_VERSION	1.2.0	
+Dotfiler	dotfiler.go	11;"	t	access:public	line:11	type:struct
+FlagResult	main.go	21;"	t	access:public	line:21	type:struct
+bufio	dotfiler.go	7;"	i	line:7
+checkFlags	main.go	28;"	f	access:private	ctype:FlagResult	line:28	signature:()	type:FlagResult
+default_source_dir	main.go	10;"	v	access:private	line:10
+default_target_dir	main.go	11;"	v	access:private	line:11
+exceptions	dotfiler.go	13;"	w	access:private	ctype:Dotfiler	line:13	type:[]string
+execute	dotfiler.go	17;"	m	access:private	ctype:Dotfiler	line:17	signature:()	type:error
+files	dotfiler.go	14;"	w	access:private	ctype:Dotfiler	line:14	type:[]string
+files	main.go	18;"	v	access:private	line:18
+flag	main.go	4;"	i	line:4
+fmt	dotfiler.go	4;"	i	line:4
+fmt	main.go	5;"	i	line:5
+io/ioutil	dotfiler.go	5;"	i	line:5
+logStart	dotfiler.go	90;"	m	access:private	ctype:Dotfiler	line:90	signature:()
+logStop	dotfiler.go	94;"	m	access:private	ctype:Dotfiler	line:94	signature:()
+main	dotfiler.go	1;"	p	line:1
+main	main.go	1;"	p	line:1
+main	main.go	58;"	f	access:private	line:58	signature:()
+name	main.go	22;"	w	access:private	ctype:FlagResult	line:22	type:*string
+option	dotfiler.go	12;"	w	access:private	ctype:Dotfiler	line:12	type:FlagResult
+os	dotfiler.go	8;"	i	line:8
+os	main.go	6;"	i	line:6
+path	dotfiler.go	6;"	i	line:6
+processElement	dotfiler.go	50;"	m	access:private	ctype:Dotfiler	line:50	signature:(file string)	type:error
+savePluginNames	dotfiler.go	69;"	m	access:private	ctype:Dotfiler	line:69	signature:(allFiles []string)	type:error
+source	main.go	23;"	w	access:private	ctype:FlagResult	line:23	type:string
+target	main.go	24;"	w	access:private	ctype:FlagResult	line:24	type:string
+usage	main.go	52;"	f	access:private	line:52	signature:()
+verbose	main.go	25;"	w	access:private	ctype:FlagResult	line:25	type:bool

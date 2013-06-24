@@ -59,5 +59,7 @@ func main() {
 	// sanity cli flag checks
 	flagOption := checkFlags()
 	dotfiler := &Dotfiler{option: flagOption, files: files}
-	dotfiler.execute()
+    if err := dotfiler.execute(); err != nil {
+        fmt.Println(err)
+    }
 }
