@@ -67,10 +67,6 @@ func (self *Dotfiler) processElement(file string) error {
 func (self *Dotfiler) savePluginNames(allFiles []string) error {
     output := "/home/thens/Dropbox/linux/vim_plugins"
 
-	if self.option.verbose {
-		fmt.Printf("Copying plugin dir names to --> %s", output)
-	}
-
     fo, err := os.Create(output)
     if err != nil { return err }
     // close fo on exit and check for its returned error
