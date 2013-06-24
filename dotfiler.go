@@ -28,15 +28,17 @@ func (self *Dotfiler) execute() error {
         }
 	}
 
-    files, _ := ioutil.ReadDir(output)
-    allFiles := make([]string, 0)
-    for _, fileObj := range files {
-        if fileObj.IsDir() {
-            allFiles = append(allFiles, fileObj.Name())
+    if *self.option.name == "archive" {
+        files, _ := ioutil.ReadDir(output)
+        allFiles := make([]string, 0)
+        for _, fileObj := range files {
+            if fileObj.IsDir() {
+                allFiles = append(allFiles, fileObj.Name())
+            }
         }
-    }
-    if err = self.savePluginNames(allFiles); err != nil {
-        return err
+        if err = self.savePluginNames(allFiles); err != nil {
+            return err
+        }
     }
 
 	if self.option.verbose {
