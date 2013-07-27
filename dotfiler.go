@@ -1,11 +1,11 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
 	"io/ioutil"
+	"os"
 	"path"
-    "bufio"
-    "os"
 )
 
 type Dotfiler struct {
@@ -15,36 +15,36 @@ type Dotfiler struct {
 }
 
 func (self *Dotfiler) execute() error {
-    output := "/home/thens/.vim/bundle"
-    var err error
+	output := "/home/thens/.vim/bundle"
+	var err error
 
 	if self.option.verbose {
 		self.logStart()
 	}
 	for _, file := range self.files {
 		// these calls could be dispatched as goroutines later on
-	    if err = self.processElement(file); err != nil {
-            return err
-        }
+		if err = self.processElement(file); err != nil {
+			return err
+		}
 	}
 
-    if *self.option.name == "archive" {
-        files, _ := ioutil.ReadDir(output)
-        allFiles := make([]string, 0)
-        for _, fileObj := range files {
-            if fileObj.IsDir() {
-                allFiles = append(allFiles, fileObj.Name())
-            }
-        }
-        if err = self.savePluginNames(allFiles); err != nil {
-            return err
-        }
-    }
+	if *self.option.name == "archive" {
+		files, _ := ioutil.ReadDir(output)
+		allFiles := make([]string, 0)
+		for _, fileObj := range files {
+			if fileObj.IsDir() {
+				allFiles = append(allFiles, fileObj.Name())
+			}
+		}
+		if err = self.savePluginNames(allFiles); err != nil {
+			return err
+		}
+	}
 
 	if self.option.verbose {
 		self.logStop()
 	}
-    return nil
+	return nil
 }
 
 func (self *Dotfiler) processElement(file string) error {
@@ -63,29 +63,33 @@ func (self *Dotfiler) processElement(file string) error {
 	if err != nil {
 		panic(err)
 	}
-    return nil
+	return nil
 }
 
 func (self *Dotfiler) savePluginNames(allFiles []string) error {
-    output := "/home/thens/Dropbox/linux/vim_plugins"
+	output := "/home/thens/Dropbox/linux/vim_plugins"
 
-    fo, err := os.Create(output)
-    if err != nil { return err }
-    // close fo on exit and check for its returned error
-    defer func() {
-        if err := fo.Close(); err != nil {
-            panic(err)
-        }
-    }()
-    w := bufio.NewWriter(fo)
+	fo, err := os.Create(output)
+	if err != nil {
+		return err
+	}
+	// close fo on exit and check for its returned error
+	defer func() {
+		if err := fo.Close(); err != nil {
+			panic(err)
+		}
+	}()
+	w := bufio.NewWriter(fo)
 
-    for _, dirName := range allFiles {
-        if _, err = w.WriteString(dirName + "\n"); err != nil {
-            return err
-        }
-    }
-    if err = w.Flush(); err != nil { return err }
-    return nil
+	for _, dirName := range allFiles {
+		if _, err = w.WriteString(dirName + "\n"); err != nil {
+			return err
+		}
+	}
+	if err = w.Flush(); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (self *Dotfiler) logStart() {
