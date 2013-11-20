@@ -32,7 +32,7 @@ func checkFlags() FlagResult {
 	flag.Usage = func() {
 		fmt.Println("Godotfiles has to be invoked with the --option flag.")
 		fmt.Println("Possible values are: restore / archive. Exiting..")
-		os.Exit(-1)
+		os.Exit(1)
 	}
 	option := flag.String("option", "restore", "Option can either be restore or archive.")
 	verbose_long := flag.Bool("verbose", false, "Verbose command flag.")
@@ -43,8 +43,10 @@ func checkFlags() FlagResult {
 	var result FlagResult
 	if *option == "restore" {
 		result = FlagResult{name: option, source: default_source_dir, target: default_target_dir, verbose: verbose}
-	} else {
+	} else if *option == "archive" {
 		result = FlagResult{name: option, source: default_target_dir, target: default_source_dir, verbose: verbose}
+	} else {
+		usage()
 	}
 	return result
 }
@@ -52,7 +54,7 @@ func checkFlags() FlagResult {
 func usage() {
 	fmt.Println("Godotfiler has to be invoked with the --option flag.")
 	fmt.Println("Possible values are: restore / archive. Exiting..")
-	os.Exit(-1)
+	os.Exit(1)
 }
 
 func main() {
