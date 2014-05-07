@@ -15,7 +15,7 @@ var (
 	// default_target_dir = "/home/thens/gocode/src/github.com/thensgens/godotfiler/test_files/target"
 
 	// static configuration for now
-	files = []string{".bashrc", ".vimrc", ".tmux.conf"}
+	files = []string{".bashrc", ".vimrc", ".tmux.conf", ".yaourtrc" }
 )
 
 type FlagResult struct {
